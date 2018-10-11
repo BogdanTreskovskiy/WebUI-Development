@@ -16,6 +16,48 @@
 }
  */
 
+var result = [];
+
+function Triangle(name, side1, side2, side3) {
+    this.name = name;
+    this.side1 = side1;
+    this.side2 = side2;
+    this.side3 = side3;
+    this.getSquare = function() {
+
+        if ((this.side1 > 0) && (this.side2 > 0) && (this.side3 > 0) && (((this.side1 + this.side2) > this.side3)
+            && (this.side2 + this.side3 > this.side1) && (this.side1 + this.side3 > this.side2))) {
+            var p = (this.side1 + this.side2 + this.side3) * 0.5;
+            var s = Math.sqrt(p * (p - this.side1) * (p - this.side2) * (p - this.side3));
+            result.push(this);
+            this.s = s;
+            return s;
+        } else {
+            console.log("Получить площадь не удалось for " + this.name);
+        }
+    }
+}
+
+var triangleOne = new Triangle('ABC', 19, 11, 15);
+var triangleTwo = new Triangle('DEF', 8, 7, 10);
+var triangleThree = new Triangle('GHI', 22.3, 11, 15);
+var triangleFour = new Triangle('JKL', 3.5, 5.7, 8);
+
+var array = [triangleOne, triangleTwo, triangleThree, triangleFour];
+
+for (var t of array) {
+    t.getSquare();
+}
+
+array.sort(function(b, a) {
+    return a.s - b.s
+})
+
+for (var t of result) {
+    console.log(t.name, t.s)
+}
+
+/*
 function Triangle(name, side1, side2, side3) {
     this.name = name;
     this.side1 = side1;
@@ -44,4 +86,4 @@ array.sort(function(b, a) {
 
 for (let t of array) {
     console.log(t.name, t.getSquare())
-}
+}*/

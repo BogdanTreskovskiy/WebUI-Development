@@ -9,9 +9,8 @@
 function Fibonachi(min, max) {
     var start = 0;
     var next = 1;
-    var boolean = true;
     var array = [];
-    while (boolean) {
+    while (Boolean(true)) {
         if (next >= min) {
             array.push(next);
         }
